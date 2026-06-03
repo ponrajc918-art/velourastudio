@@ -158,7 +158,7 @@ export default function ShopCollectionSection() {
               {/* SHOP NOW — primary CTA */}
               <motion.div variants={fadeUp}>
                 <a
-                  href="https://fashiondesigners.vercel.app/"
+                  href="https://fashiondesigners.vercel.app/?ref=veloura-studio"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group inline-flex items-center gap-5 font-inter transition-all duration-600"
