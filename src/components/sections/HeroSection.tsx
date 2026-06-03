@@ -21,7 +21,7 @@ export default function HeroSection() {
         className="absolute inset-0 w-full h-full object-cover"
         aria-hidden="true"
       >
-        <source src="/assets/videos/ad001.mp4" type="video/mp4" />
+        <source src="/assets/videos/ad002.mp4" type="video/mp4" />
       </video>
 
       {/* Cinematic gradient — depth + legibility */}
