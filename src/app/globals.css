@@ -1,0 +1,466 @@
+/* ===========================
+   FONTSOURCE IMPORTS
+   (Self-hosted, no network req)
+   =========================== */
+@import "@fontsource/playfair-display/400.css";
+@import "@fontsource/playfair-display/400-italic.css";
+@import "@fontsource/playfair-display/500.css";
+@import "@fontsource/playfair-display/600.css";
+@import "@fontsource/playfair-display/700.css";
+@import "@fontsource/playfair-display/800.css";
+@import "@fontsource/cormorant-garamond/300.css";
+@import "@fontsource/cormorant-garamond/300-italic.css";
+@import "@fontsource/cormorant-garamond/400.css";
+@import "@fontsource/cormorant-garamond/400-italic.css";
+@import "@fontsource/cormorant-garamond/500.css";
+@import "@fontsource/cormorant-garamond/600.css";
+@import "@fontsource/cormorant-garamond/700.css";
+@import "@fontsource/inter/100.css";
+@import "@fontsource/inter/200.css";
+@import "@fontsource/inter/300.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===========================
+   LUXURY DESIGN TOKENS
+   =========================== */
+:root {
+  --font-playfair: "Playfair Display", Georgia, serif;
+  --font-cormorant: "Cormorant Garamond", Georgia, serif;
+  --font-inter: "Inter", system-ui, sans-serif;
+
+  --color-ivory: #faf9f7;
+  --color-pearl: #f5f0e8;
+  --color-champagne: #e8d5b0;
+  --color-beige: #d9c5a0;
+  --color-gold: #c4a355;
+  --color-gold-light: #d4b870;
+  --color-warm-black: #1a1917;
+  --color-stone: #a89882;
+
+  --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-editorial: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-cinematic: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+/* ===========================
+   BASE RESET & GLOBAL STYLES
+   =========================== */
+html {
+  scroll-behavior: auto; /* Lenis handles smooth scroll */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-ivory);
+  color: var(--color-warm-black);
+  overflow-x: hidden;
+  font-family: var(--font-inter);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* ===========================
+   CUSTOM SCROLLBAR
+   =========================== */
+::-webkit-scrollbar {
+  width: 2px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-pearl);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-gold);
+  border-radius: 1px;
+}
+
+/* ===========================
+   TYPOGRAPHY UTILITIES
+   =========================== */
+@layer utilities {
+  /* Display — cinematic hero text */
+  .text-display {
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    line-height: 0.92;
+    letter-spacing: -0.02em;
+  }
+
+  /* Headline — editorial section headings */
+  .text-headline {
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+  }
+
+  /* Section — large section headings */
+  .text-section {
+    font-size: clamp(1.75rem, 3.5vw, 3.5rem);
+    line-height: 1.05;
+  }
+
+  /* Sub — subheadings */
+  .text-sub {
+    font-size: clamp(1.25rem, 2vw, 2rem);
+    line-height: 1.2;
+  }
+
+  /* Label — spaced uppercase labels */
+  .text-label {
+    font-size: 0.6875rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+  }
+
+  /* Caption — editorial captions */
+  .text-caption {
+    font-size: 0.8125rem;
+    letter-spacing: 0.08em;
+    line-height: 1.6;
+  }
+
+  /* Serif editorial body */
+  .text-editorial-body {
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    line-height: 1.85;
+    letter-spacing: 0.01em;
+  }
+}
+
+/* ===========================
+   LUXURY LINK STYLES
+   =========================== */
+.luxury-link {
+  display: inline-block;
+  position: relative;
+  font-family: var(--font-inter);
+  font-size: 0.6875rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: inherit;
+}
+
+.luxury-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: currentColor;
+  transition: width 0.6s var(--ease-luxury);
+}
+
+.luxury-link:hover::after {
+  width: 100%;
+}
+
+/* ===========================
+   LUXURY BUTTON
+   =========================== */
+.btn-luxury {
+  display: inline-block;
+  font-family: var(--font-inter);
+  font-size: 0.6875rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1rem 2.5rem;
+  border: 1px solid currentColor;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.6s var(--ease-luxury), border-color 0.6s var(--ease-luxury);
+}
+
+.btn-luxury::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: currentColor;
+  transform: translateY(100%);
+  transition: transform 0.6s var(--ease-luxury);
+  z-index: -1;
+}
+
+.btn-luxury:hover {
+  color: var(--color-ivory);
+}
+
+.btn-luxury:hover::before {
+  transform: translateY(0);
+}
+
+/* ===========================
+   SECTION REVEAL ANIMATIONS
+   =========================== */
+.reveal-fade {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1.2s var(--ease-luxury), transform 1.2s var(--ease-luxury);
+}
+
+.reveal-fade.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===========================
+   PARALLAX IMAGE
+   =========================== */
+.parallax-image-wrap {
+  overflow: hidden;
+  position: relative;
+}
+
+.parallax-image-wrap img {
+  transform-origin: center;
+  will-change: transform;
+}
+
+/* ===========================
+   EDITORIAL DIVIDER
+   =========================== */
+.divider-gold {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.divider-gold::before,
+.divider-gold::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--color-gold), transparent);
+}
+
+/* ===========================
+   HORIZONTAL RULE
+   =========================== */
+.hr-luxury {
+  border: none;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--color-champagne), transparent);
+  margin: 0;
+}
+
+/* ===========================
+   VIDEO SECTION STYLES
+   =========================== */
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ===========================
+   IMAGE OVERLAY EFFECTS
+   =========================== */
+.img-overlay-dark::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(26, 25, 23, 0.35);
+  pointer-events: none;
+}
+
+.img-overlay-luxury::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(26, 25, 23, 0.05) 0%,
+    rgba(26, 25, 23, 0.25) 60%,
+    rgba(26, 25, 23, 0.55) 100%
+  );
+  pointer-events: none;
+}
+
+/* ===========================
+   SECTION FLOW — NO WHITE GAPS
+   =========================== */
+
+/* Ensure main never shows body bg-color between sections */
+main {
+  background-color: #080806;
+}
+
+/* Every direct section child of main must have its own bg */
+main > section,
+main > footer {
+  position: relative;
+}
+
+/* ===========================
+   SECTION TRANSITIONS
+   (smooth visual blending)
+   =========================== */
+
+/* Hero → Brand Story: soft bleed at top of Brand Story */
+#brand-story::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, rgba(8, 8, 6, 0.08), transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Editorial → Appointments: smooth into dark */
+#appointments::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(
+    to bottom,
+    rgba(19, 15, 11, 0.12),
+    transparent
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ===========================
+   RESPONSIVE — MOBILE FIRST
+   =========================== */
+
+/* Prevent any text from overflowing containers */
+h1,
+h2,
+h3,
+h4,
+p,
+span {
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Prevent images from creating horizontal scroll */
+img,
+video {
+  max-width: 100%;
+}
+
+/* ===========================
+   MOBILE TYPOGRAPHY SCALE
+   375px–767px
+   =========================== */
+@media (max-width: 767px) {
+  /* Reduce hero text spacing on small screens */
+  .hero-logo-text {
+    letter-spacing: 0.15em !important;
+  }
+
+  /* Tighter editorial body on mobile */
+  .text-editorial-body {
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+
+  /* Brand pillars: single column on mobile */
+  .brand-pillars {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ===========================
+   TABLET ADJUSTMENTS
+   768px–1023px
+   =========================== */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .text-display {
+    font-size: clamp(3rem, 7vw, 5rem);
+  }
+}
+
+/* ===========================
+   DESKTOP ENHANCEMENTS
+   1440px+
+   =========================== */
+@media (min-width: 1440px) {
+  .text-display {
+    font-size: 7rem;
+  }
+}
+
+/* ===========================
+   ANIMATION PERFORMANCE
+   =========================== */
+.parallax-element {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Prevent layout jank during parallax */
+.parallax-container {
+  overflow: hidden;
+  transform: translateZ(0);
+}
+
+
+/* ===========================
+   SCROLL INDICATOR ANIMATION
+   =========================== */
+@keyframes scrollLineAnim {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scaleY(1) translateY(0);
+  }
+  50% {
+    opacity: 0.18;
+    transform: scaleY(0.7) translateY(6px);
+  }
+}
+
+/* ===========================
+   CURSOR STYLE
+   =========================== */
+a,
+button {
+  cursor: pointer;
+}
+
+/* ===========================
+   FRAMER MOTION WILL-CHANGE
+   =========================== */
+.motion-element {
+  will-change: transform, opacity;
+}
+
+/* ===========================
+   MARQUEE OVERFLOW FIX
+   =========================== */
+.marquee-track {
+  overflow: hidden;
+  width: 100%;
+}
+
+/* ===========================
+   MOBILE NAV FIXES
+   =========================== */
+@media (max-width: 767px) {
+  /* Ensure mobile menu is above everything except intro */
+  .mobile-menu-overlay {
+    z-index: 49;
+  }
+}
